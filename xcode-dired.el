@@ -73,6 +73,17 @@ Return the project directory if found, or nil."
   )
 )
 
+(defun xcode-clean()
+  "Clean the default target and configuration."
+  (interactive)
+  (let ((xcode-root (xcode-find-project)))
+    (if xcode-root
+	(shell-command (format "cd \"%s/..\" && xcodebuild clean" xcode-root))
+      (error "Unable to find an Xcode project to clean")
+    )
+  )
+)
+
 (defvar xcode-dired-mode-map
   (let ((map (make-sparse-keymap)))
   (define-key map (kbd "C-c C-b") 'xcode-build)
