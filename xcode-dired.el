@@ -6,6 +6,8 @@
  ;; Version: 0.0.1
  ;; Installation:
  ;; Put this file somewhere in your load-path (e.g. /usr/share/emacs/site-lisp) 
+ ;; Add this to your .emacs:
+ ;; (require 'xcode-dired-mode "xcode-dired")
  ;; Copyright:
  ;; This file is free software; you can redistribute it and/or modify 
  ;; it under the terms of the GNU General Public License as published by 
@@ -58,6 +60,14 @@ Return the enclosing directory if found, or nil."
 	(expand-file-name (car xcode-root))
     nil)
   )
+)
+
+(defun xcode-build()
+  "Build the default target and configuration."
+  (let 	;;TODO work out some error handling if the project root doesn't exist
+       ((build-command (format "cd \"%s\" && xcodebuild" xcode-find-project)))
+  )
+  (shell-command build-command)
 )
 
 (defvar xcode-dired-mode-map
