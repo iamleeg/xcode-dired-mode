@@ -4,8 +4,8 @@
 ;; this function was borrowed from an old version of files.el
 (defun xcode-locate-dominating-files (file regexp)
 "Look up the directory hierarchy from FILE for a file matching REGEXP.
-Stop at the first parent where a matching file is found and return the list
-of files that that match in this directory."
+Stop at the first parent where a matching file is found and return the list of
+files that match in this directory."
   (catch 'found
     ;; `user' is not initialized yet because `file' may not exist, so we may
     ;; have to walk up part of the hierarchy before we find the "initial UID".
@@ -32,12 +32,12 @@ of files that that match in this directory."
               (setq dir nil))))
       nil)))
 
-(defun xcode-find-project
+(defun xcode-find-project()
   "Look for <Project>.xcodeproj directory to see if we're in an Xcode project.
 Return the enclosing directory if found, or nil."
   (let ((xcode-root (xcode-locate-dominating-files default-directory "\\.xcodeproj$")))
     (if xcode-root
-	(expand-file-name xcode-root)
+	(expand-file-name (car xcode-root))
     nil)
   )
 )
