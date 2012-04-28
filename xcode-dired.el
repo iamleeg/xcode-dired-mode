@@ -1,5 +1,23 @@
-;; Xcode minor mode for dired
-;; Based largely on erlang-dired-mode.el by Joseph(纪秀峰)
+;;; xcode-dired.el --- Xcode minor mode for dired
+ ;; Based largely on erlang-dired-mode.el by Joseph(纪秀峰)
+ ;; Author: Graham Lee <graham@iamleeg.com>
+ ;; URL: http://twitter.com/secboffin
+ ;; Keywords: xcode dired
+ ;; Version: 0.0.1
+ ;; Installation:
+ ;; Put this file somewhere in your load-path (e.g. /usr/share/emacs/site-lisp) 
+ ;; Copyright:
+ ;; This file is free software; you can redistribute it and/or modify 
+ ;; it under the terms of the GNU General Public License as published by 
+ ;; the Free Software Foundation; either version 2, or (at your option) 
+ ;; any later version. 
+ ;; This file is distributed in the hope that it will be useful, 
+ ;; but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ ;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+ ;; GNU General Public License for more details. 
+ ;; You should have received a copy of the GNU General Public License 
+ ;; along with GNU Emacs; see the file COPYING.  If not, write to 
+ ;; the Free Software Foundation, Inc., 59 Temple Place - Suite 330, 
 
 ;; this function was borrowed from an old version of files.el
 (defun xcode-locate-dominating-files (file regexp)
