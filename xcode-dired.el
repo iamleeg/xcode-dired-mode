@@ -65,12 +65,12 @@ Return the enclosing directory if found, or nil."
 (defun xcode-build()
   "Build the default target and configuration."
   (interactive)
-  (let 	;;TODO work out some error handling if the project root doesn't exist
-      ((xcode-root (xcode-find-project))
-       (build-command (format "cd \"%s\" && xcodebuild" xcode-root))
-       )
+  (let ((xcode-root (xcode-find-project)))
+    (if xcode-root
+	(shell-command (format "cd \"%s\" && xcodebuild" xcode-root))
+      (error "Unable to find an Xcode project to build")
+    )
   )
-  (shell-command build-command)
 )
 
 (defvar xcode-dired-mode-map
