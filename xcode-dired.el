@@ -64,8 +64,11 @@ Return the enclosing directory if found, or nil."
 
 (defun xcode-build()
   "Build the default target and configuration."
+  (interactive)
   (let 	;;TODO work out some error handling if the project root doesn't exist
-       ((build-command (format "cd \"%s\" && xcodebuild" xcode-find-project)))
+      ((xcode-root (xcode-find-project))
+       (build-command (format "cd \"%s\" && xcodebuild" xcode-root))
+       )
   )
   (shell-command build-command)
 )
