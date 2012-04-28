@@ -54,7 +54,7 @@ files that match in this directory."
 
 (defun xcode-find-project()
   "Look for <Project>.xcodeproj directory to see if we're in an Xcode project.
-Return the enclosing directory if found, or nil."
+Return the project directory if found, or nil."
   (let ((xcode-root (xcode-locate-dominating-files default-directory "\\.xcodeproj$")))
     (if xcode-root
 	(expand-file-name (car xcode-root))
@@ -67,7 +67,7 @@ Return the enclosing directory if found, or nil."
   (interactive)
   (let ((xcode-root (xcode-find-project)))
     (if xcode-root
-	(shell-command (format "cd \"%s\" && xcodebuild" xcode-root))
+	(shell-command (format "cd \"%s/..\" && xcodebuild" xcode-root))
       (error "Unable to find an Xcode project to build")
     )
   )
