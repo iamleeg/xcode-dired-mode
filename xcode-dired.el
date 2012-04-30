@@ -21,6 +21,11 @@
  ;; along with GNU Emacs; see the file COPYING.  If not, write to 
  ;; the Free Software Foundation, Inc., 59 Temple Place - Suite 330, 
 
+(defvar xcode-build-configuration "Debug"
+  "Build configuration to use when building your Xcode target.
+Usually this will be \"Debug\" or \"Release\", but you might have defined
+something custom too.")
+
 ;; this function was borrowed from an old version of files.el
 (defun xcode-locate-dominating-files (file regexp)
 "Look up the directory hierarchy from FILE for a file matching REGEXP.
@@ -67,7 +72,7 @@ Return the project directory if found, or nil."
   (interactive)
   (let ((xcode-root (xcode-find-project)))
     (if xcode-root
-	(shell-command (format "cd \"%s/..\" && xcodebuild" xcode-root))
+	(shell-command (format "cd \"%s/..\" && xcodebuild -configuration %s" xcode-root xcode-build-configuration))
       (error "Unable to find an Xcode project to build")
     )
   )
